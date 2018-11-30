@@ -15,6 +15,7 @@ public class IndexController {
     @Autowired
     UserService userService;
 
+    @Log("默认方法")
     @RequestMapping("/index")
     String index() {
         return oracleBean.getUrl()+"——"+oracleBean.getPort();
