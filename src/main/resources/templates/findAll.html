@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+   <!-- <link th:href="@{/js/jquery-1.11.3.min.js}" rel="stylesheet"/>-->
+</head>
+<body>
+<h2>Hello World!</h2>
+<div th:if="not ${list.empty}">
+    <table>
+        <tr th:each="cell,stat : ${list}" th:class="${stat.odd}?'odd':'even'">
+            <td th:text="${cell.userId}"></td>
+            <td th:text="${cell.userName}"></td>
+            <td th:text="${cell.userPassword}"></td>
+            <td th:text="${cell.userEmail}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

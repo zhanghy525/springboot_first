@@ -11,5 +11,19 @@
 <p th:text="${user.userName}"></p>
 <p th:text="${user.userPassword}"></p>
 <p th:text="${user.userEmail}"></p>
+<a th:href="@{/user/{id}(id=${user.userId},name=${user.userName},password=${user.userPassword})}">路径变量id和普通变量name</a>
+<div th:if="${user.userId} == 1">
+    <p>The year is <span th:text="2017">1492</span>.</p>
+    <p>In two years, it will be <span th:text="2017 + 2">1494</span>.</p>
+</div>
+<div th:if="${user.userId} == null">
+    <p>The year is <span th:text="2017">1492</span>.</p>
+    <p>In two years, it will be <span th:text="2017 + 2">1494</span>.</p>
+</div>
+<div th:class="${user.userId}==1?'red':'green'"><!--主要用来操纵样式吧-->
+    <p th:utext="|hello,${user.userName},your id is ${user.userId}|"></p>
+    <p>The year is <span th:text="2017">1492</span>.</p>
+    <p>In two years, it will be <span th:text="2017 + 2">1494</span>.</p>
+</div>
 </body>
 </html>
