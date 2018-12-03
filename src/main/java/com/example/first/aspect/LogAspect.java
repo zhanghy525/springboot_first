@@ -1,5 +1,7 @@
 package com.example.first.aspect;
 
+import com.example.first.Util.HttpContextUtils;
+import com.example.first.Util.IPUtils;
 import com.example.first.annocation.Log;
 import com.example.first.bean.SysLog;
 import com.example.first.cluster.dao.SysLogDao;
@@ -64,10 +66,9 @@ public class LogAspect {
             sysLog.setParams(params);
         }
         // 获取request
-        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest req = attributes.getRequest();
+        HttpServletRequest req = HttpContextUtils.getHttpServletRequest();
         // 设置IP地址
-        sysLog.setIp(req.getRemoteAddr());
+        sysLog.setIp(IPUtils.getIpAddr(req));
         // 模拟一个用户名
         sysLog.setUsername("mrbird");
         sysLog.setTime((int)time);
